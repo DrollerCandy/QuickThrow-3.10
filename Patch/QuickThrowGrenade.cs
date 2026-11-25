@@ -41,7 +41,8 @@ namespace QuickThrow.Patch
                     return;
                     
                 var playerField = AccessTools.Field(typeof(Player.BaseGrenadeHandsController), "_player");
-                if (playerField?.GetValue(__instance) is not Player player)
+                var playerObj = playerField?.GetValue(__instance);
+                if (!(playerObj is Player player))
                     return;
 
                 if (__instance is Player.QuickGrenadeThrowHandsController && player.IsYourPlayer)

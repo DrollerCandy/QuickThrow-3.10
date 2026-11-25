@@ -1,5 +1,4 @@
-﻿#nullable enable
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -18,11 +17,11 @@ namespace QuickThrow.Utils
     public static class QuickThrowLogger
     {
         private static EnumLoggerMode _mode = EnumLoggerMode.DirectWrite;
-        private static readonly object WriteLock = new();
+        private static readonly object WriteLock = new object();
         private static readonly string LOGFilePath = PathsFile.LogFilePath;
-        private static readonly List<string> PackedLogs = [];
+        private static readonly List<string> PackedLogs = new List<string>();
         private static bool _autoFlushEnabled = false;
-        private static readonly Dictionary<string, (string Block, int Count)> DeduplicationMap = new();
+        private static readonly Dictionary<string, (string Block, int Count)> DeduplicationMap = new Dictionary<string, (string Block, int Count)>();
         private static bool _stopFlush = false;
         private static bool DebugOnly { get; set; } = false;
         
@@ -68,7 +67,7 @@ namespace QuickThrow.Utils
         public static void Error(string message) => Write("❌", message);
         public static void Log(string message) => Write("", message);
 
-        public static void LogException(Exception ex, string? context = null)
+        public static void LogException(Exception ex, string context = null)
         {
             if (!DebugOnly) return;
 
@@ -259,7 +258,8 @@ namespace QuickThrow.Utils
             if (!DebugOnly)
                 return;
 
-            logs ??= [];
+            if (logs == null)
+                logs = new List<string>();
             logs.Add(message);
         }
         
