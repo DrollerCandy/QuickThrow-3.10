@@ -22,34 +22,34 @@
     <ItemGroup>
         <!-- Unity + EFT (utilisés dans le projet) -->
         <Reference Include="UnityEngine.CoreModule">
-            <HintPath>..\..\EscapeFromTarkov_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+            <HintPath>..\EscapeFromTarkov_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
         </Reference>
         <Reference Include="Assembly-CSharp">
-            <HintPath>..\..\EscapeFromTarkov_Data\Managed\Assembly-CSharp.dll</HintPath>
+            <HintPath>..\EscapeFromTarkov_Data\Managed\Assembly-CSharp.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine">
-            <HintPath>..\..\EscapeFromTarkov_Data\Managed\UnityEngine.dll</HintPath>
+            <HintPath>..\EscapeFromTarkov_Data\Managed\UnityEngine.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine.InputLegacyModule">
-            <HintPath>..\..\EscapeFromTarkov_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+            <HintPath>..\EscapeFromTarkov_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
         </Reference>
 
         <!-- SPT (utilisés dans le projet) -->
         <Reference Include="Comfort">
-            <HintPath>..\..\EscapeFromTarkov_Data\Managed\Comfort.dll</HintPath>
+            <HintPath>..\EscapeFromTarkov_Data\Managed\Comfort.dll</HintPath>
         </Reference>
 
         <!-- BepInEx / Harmony (utilisés dans le projet) -->
         <Reference Include="BepInEx">
-            <HintPath>..\..\BepInEx\core\BepInEx.dll</HintPath>
+            <HintPath>..\BepInEx\core\BepInEx.dll</HintPath>
         </Reference>
         <Reference Include="0Harmony">
-            <HintPath>..\..\BepInEx\core\0Harmony.dll</HintPath>
+            <HintPath>..\BepInEx\core\0Harmony.dll</HintPath>
         </Reference>
     </ItemGroup>
     
     <ItemGroup>
-      <Content Include="..\..\BepInEx\plugins\QuickThrow\QuickThrow_log.txt">
+      <Content Include="..\BepInEx\plugins\QuickThrow\QuickThrow_log.txt">
         <Link>SmartAction_log.txt</Link>
       </Content>
     </ItemGroup>
@@ -61,7 +61,7 @@
     
     <Target Name="PostBuild" AfterTargets="Build">
         <Copy SourceFiles="$(OutputPath)$(AssemblyName).dll"
-              DestinationFolder="..\..\BepInEx\plugins\QuickThrow\"
+              DestinationFolder="..\BepInEx\plugins\QuickThrow\"
               OverwriteReadOnlyFiles="true"
               SkipUnchangedFiles="false" />
     </Target>
