@@ -10,8 +10,8 @@ namespace QuickThrow.Patch
     internal class QuickThrowGrenade
     {
         [HarmonyPrefix]
-        [HarmonyPatch("SetInHands", typeof(ThrowWeapItemClass), typeof(Callback<IHandsThrowController>))]
-        public static bool Prefix(Player __instance, ThrowWeapItemClass throwWeap, Callback<IHandsThrowController> callback)
+        [HarmonyPatch("SetInHands", typeof(ThrowWeapItemClass), typeof(Comfort.Common.Callback<IOnHandsUseCallback>))]
+        public static bool Prefix(Player __instance, ThrowWeapItemClass throwWeap, Comfort.Common.Callback<IOnHandsUseCallback> callback)
         {
             if (Plugin.DisableFastGrenade.Value)
                 return true;
@@ -21,7 +21,7 @@ namespace QuickThrow.Patch
                 return true;
             
             __instance.SetInHandsForQuickUse(throwWeap,
-                new Callback<GInterface179>(result =>
+                new Comfort.Common.Callback<IOnHandsUseCallback>(result =>
                 {
                     QuickThrowLogger.Log($"[QuickThrowGrenade] SetInHandsForQuickUse result = {result}");
                 }));
